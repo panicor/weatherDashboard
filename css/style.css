@@ -1,12 +1,17 @@
-.text-center{
-    justify-content: center;
+* {
+    font-family: 'Merriweather', serif;
 }
+
 .citiesBtn{
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 100%;
 }
 
+.row{
+    display: flex;
+    flex-direction: row;
+}
 .bg-blue {
     background-color:navy;
 }
@@ -15,7 +20,45 @@
     color:white;
 }
 
-.header-height{
-    display:flex;
-    height:20%;
+
+.list{
+    list-style: none;  
+
+}
+
+.list li{
+    padding: 3%;
+}
+
+.show{ 
+    width: 90%;  
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+    justify-content: left;
+    align-items: flex-start;
+    padding: 3%;
+}
+
+.searchValueHeader .date{
+    display: flex;
+padding-top: 2%;
+padding-bottom: 2%;
+justify-content: center;
+
+}
+
+.container {
+display: flex;
+border: solid navy;
+padding: 2%;
+}
+
+.containerContainer{
+    padding-left: 3%;
+}
+
+.container-fluid {
+    text-align: center;
+    height: 100%;
 }

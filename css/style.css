@@ -1,3 +1,21 @@
 .text-center{
-    text-align: center;
+    justify-content: center;
+}
+.citiesBtn{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.bg-blue {
+    background-color:navy;
+}
+
+.text-light{
+    color:white;
+}
+
+.header-height{
+    display:flex;
+    height:20%;
 }

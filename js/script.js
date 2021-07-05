@@ -67,7 +67,6 @@ function getCurrentWeather (searchValue){
     })
     .then(function(data) {
         //logs data that comes back
-     console.log(data);
      //grabs lattitude and longitude from data and sets to variable
     var lat = data.coord.lat;
     var lon = data.coord.lon;
@@ -93,8 +92,6 @@ function getCoords (lat, lon, searchValue){
                 return res.json();
             })
             .then(function(data) {
-                //logs data
-                console.log(data);
                 //if no data, alerts to no city found
               if(data[0] = null){
                   alert("Location not found");
@@ -200,33 +197,30 @@ function getCoords (lat, lon, searchValue){
 function saveSearchVal (searchValue) {
     //pushes search value to cities array
     cities.push(searchValue);
-
-//for (var i = 0; i < cities.length; i++){
-
-//if(cities.indexOf(cities[i]) !== cities.lastIndexOf(cities[i])){
-//    if(hasDuplicates(cities)){
-//}
-//sets citites array to local storage
-localStorage.setItem("cities", cities);
+    //saves to local storage
+    localStorage.setItem("cities", cities);
           
  }
 
-
+//creates button with search value
 function createCityButton(name) {
-    const newButton = document.createElement('button');
+    var newButton = document.createElement('button');
+    //value and html sset to input name
     newButton.value = name;
     newButton.innerHTML =  name;
+    //event listener to history buttons
     newButton.addEventListener('click', function(event){
-        const cityName = event.target.value;
+        var cityName = event.target.value;
+        //gets weather from button value
         getCurrentWeather(cityName);
     })
+    //returns button
     return newButton;
 }
           
 
 //event listener to search click
 searchBtn.addEventListener("click", function(event) {
-    console.log('EVENT.TARGET-> ',event.target);
     searchVal();
 });
 

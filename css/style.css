@@ -23,7 +23,6 @@
 
 .list{
     list-style: none;  
-
 }
 
 .list li{
@@ -74,3 +73,24 @@ width: 100%;
 
 }
 
+.dayContainer{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.dayOne .dayTwo .dayThree .dayFour .dayFive{
+    padding: 3%;
+    border: solid navy;
+}
+
+.dayContainer{
+    display: flex;
+    flex-direction: row;
+    padding: 3%;
+    justify-content: space-evenly;
+}
+/* 
+.dayContainer div{
+    border: solid navy;
+} */

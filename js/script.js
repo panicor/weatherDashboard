@@ -2,7 +2,7 @@
 var apiKey = "b8e22ed830ec486c66d2214fabd24fbd";
 //hooks into html
 var searchBtn = document.querySelector("#search-btn");
-var citiesBtn = document.querySelector(".citiesBtn");
+var citiesList = document.querySelector(".citiesBtn");
 var showSection = document.querySelector(".show");
 var list = document.querySelector(".list");
 var list1 = document.querySelector(".list1");
@@ -22,17 +22,17 @@ var day2 = document.querySelector(".day2");
 var day22 = document.querySelector(".day22");
 var day222 = document.querySelector(".day222");
 var dayThree = document.querySelector(".day3");
-var day3= document.querySelector(".day1");
-var day33 = document.querySelector(".day11");
-var day333 = document.querySelector(".day111");
+var day3= document.querySelector(".day3");
+var day33 = document.querySelector(".day33");
+var day333 = document.querySelector(".day333");
 var dayFour = document.querySelector(".day4");
-var day4 = document.querySelector(".day1");
-var day44 = document.querySelector(".day11");
-var day444 = document.querySelector(".day111");
+var day4 = document.querySelector(".day4");
+var day44 = document.querySelector(".day44");
+var day444 = document.querySelector(".day444");
 var dayFive = document.querySelector(".day5");
-var day5 = document.querySelector(".day1");
-var day55 = document.querySelector(".day11");
-var day555 = document.querySelector(".day111");
+var day5 = document.querySelector(".day5");
+var day55 = document.querySelector(".day55");
+var day555 = document.querySelector(".day555");
 var day1Header = document.querySelector(".day1Header");
 var day2Header = document.querySelector(".day2Header");
 var day3Header = document.querySelector(".day3Header");
@@ -47,7 +47,9 @@ var cities = [];
 function searchVal (){
     //lowercase trimmed search input value
     var searchValue = document.querySelector("#search-val").value.trim().toLowerCase();
-    
+    //calls other functions using input value
+    var newButton = createCityButton(searchValue);
+    citiesList.appendChild(newButton);
     saveSearchVal(searchValue);
     getCurrentWeather(searchValue);
 }
@@ -96,6 +98,7 @@ function getCoords (lat, lon, searchValue){
                 //if no data, alerts to no city found
               if(data[0] = null){
                   alert("Location not found");
+                  //if location is found, do this
               }else{
                 // 5 day forecast
                 headerHeader.innerHTML = "5 Day Forecast: ";
@@ -194,27 +197,36 @@ function getCoords (lat, lon, searchValue){
                })  
         }
 
- function saveSearchVal (searchValue) {
-     //pushes search value to cities array
-             cities.push(searchValue);
+function saveSearchVal (searchValue) {
+    //pushes search value to cities array
+    cities.push(searchValue);
 
 //for (var i = 0; i < cities.length; i++){
-        
-            //if(cities.indexOf(cities[i]) !== cities.lastIndexOf(cities[i])){
-            //    if(hasDuplicates(cities)){
+
+//if(cities.indexOf(cities[i]) !== cities.lastIndexOf(cities[i])){
+//    if(hasDuplicates(cities)){
 //}
-
 //sets citites array to local storage
-            localStorage.setItem("Cities", cities);
-            //creates button for search value
-            var cityBtn = document.createElement("button");
+localStorage.setItem("cities", cities);
+          
+ }
 
-            cityBtn.textContent = searchValue; 
-            cityBtn.value = searchValue;
-            citiesBtn.appendChild(cityBtn);
-            cityBtn.addEventListener("click", searchVal);
-           
-            }
+
+function createCityButton(name) {
+    const newButton = document.createElement('button');
+    newButton.value = name;
+    newButton.innerHTML =  name;
+    newButton.addEventListener('click', function(event){
+        const cityName = event.target.value;
+        getCurrentWeather(cityName);
+    })
+    return newButton;
+}
+          
 
 //event listener to search click
-searchBtn.addEventListener("click", searchVal);
+searchBtn.addEventListener("click", function(event) {
+    console.log('EVENT.TARGET-> ',event.target);
+    searchVal();
+});
+

@@ -89,6 +89,7 @@ width: 100%;
     flex-direction: row;
     padding: 3%;
     justify-content: space-evenly;
+    border: solid navy;
 }
 /* 
 .dayContainer div{

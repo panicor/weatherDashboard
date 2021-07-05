@@ -66,7 +66,6 @@ function getCurrentWeather (searchValue){
         return res.json();
     })
     .then(function(data) {
-        //logs data that comes back
      //grabs lattitude and longitude from data and sets to variable
     var lat = data.coord.lat;
     var lon = data.coord.lon;
@@ -98,6 +97,8 @@ function getCoords (lat, lon, searchValue){
                   //if location is found, do this
               }else{
                 // 5 day forecast
+                dayContainer.classList.add("borders");
+                showSection.classList.add("borders");
                 headerHeader.innerHTML = "5 Day Forecast: ";
                 //sets date to day ahead
                 day1Header.innerHTML = moment().add(1,"day").format("MM/DD/YY");
@@ -178,9 +179,11 @@ function getCoords (lat, lon, searchValue){
                   }
                   else if (uvi > 2.5 && uvi <= 5.5){
                     list4.style.backgroundColor = "yellow";
+                    list4.style.color = "black";
                 }
                   else if (uvi > 5.5 && uvi <= 7.5){
                     list4.style.backgroundColor = "orange";
+                    list4.style.color = "black";
                 }
                   else {
                     list4.style.backgroundColor = "red";

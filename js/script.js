@@ -11,6 +11,7 @@ var list3 = document.querySelector(".list3");
 var list4 = document.querySelector(".list4");
 var searchValueHeader = document.querySelector(".searchValueHeader");
 var date = document.querySelector(".date");
+var uviContainer = document.querySelector(".uvi");
 
 //empty array to add to later
 var cities = [];
@@ -82,10 +83,26 @@ function getCoords (lat, lon, searchValue){
                   searchValueHeader.innerHTML = searchValue;
                   date.innerHTML = moment().format("MM/DD/YY");
                   
+
                   list1.innerHTML = "Temperature: " + temp + "°";
                   list2.innerHTML = "Wind: " + wind + " MPH";
                   list3.innerHTML = "Humidity: " + hum + " %";
                   list4.innerHTML = "UV Index: " + uvi;
+
+                  if (uvi <= 2.5){
+                   list4.style.backgroundColor = "green";
+                   list4.style.color = "white";
+                  }
+                  else if (uvi > 2.5 && uvi <= 5.5){
+                    list4.style.backgroundColor = "yellow";
+                }
+                  else if (uvi > 5.5 && uvi <= 7.5){
+                    list4.style.backgroundColor = "orange";
+                }
+                  else {
+                    list4.style.backgroundColor = "red";
+                    list4.style.color = "white";
+            }
                 //  getCurrentWeather(data[0]);
               }
                })

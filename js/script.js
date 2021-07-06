@@ -39,6 +39,8 @@ var day3Header = document.querySelector(".day3Header");
 var day4Header = document.querySelector(".day4Header");
 var day5Header = document.querySelector(".day5Header");
 var headerHeader = document.querySelector(".headerHeader")
+var icons = document.querySelector(".icon");
+var headerContainer = document.querySelector(".headerContainer");
 
 //empty array to add to later
 var cities = [];
@@ -96,9 +98,10 @@ function getCoords (lat, lon, searchValue){
                   alert("Location not found");
                   //if location is found, do this
               }else{
-                // 5 day forecast
+                //adds borders to containers
                 dayContainer.classList.add("borders");
                 showSection.classList.add("borders");
+                // 5 day forecast
                 headerHeader.innerHTML = "5 Day Forecast: ";
                 //sets date to day ahead
                 day1Header.innerHTML = moment().add(1,"day").format("MM/DD/YY");
@@ -164,8 +167,9 @@ function getCoords (lat, lon, searchValue){
                   //adds search val and date to page
                   searchValueHeader.innerHTML = searchValue;
                   date.innerHTML = moment().format("MM/DD/YY");
-                  
-                  //adds weather data to page
+                  console.log(data);
+                  //adds weather and icon data to page
+                  icons.setAttribute("src", "http://openweathermap.org/img/w/" + data.current.weather[0].icon + ".png");
                   list1.innerHTML = "Temperature: " + temp + "°";
                   list2.innerHTML = "Wind: " + wind + " MPH";
                   list3.innerHTML = "Humidity: " + hum + " %";
@@ -221,7 +225,6 @@ function createCityButton(name) {
     return newButton;
 }
           
-
 //event listener to search click
 searchBtn.addEventListener("click", function(event) {
     searchVal();
